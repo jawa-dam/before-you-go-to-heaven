@@ -47,6 +47,35 @@
     faders.forEach(function (el) { el.classList.add('visible'); });
   }
 
+  // Random book cover animations on each page load
+  var frontAnims = [
+    'cover-anim-fade-rise',
+    'cover-anim-fade-scale',
+    'cover-anim-slide-left',
+    'cover-anim-slide-right',
+    'cover-anim-flip-in',
+    'cover-anim-drop-bounce',
+    'cover-anim-zoom-spin',
+    'cover-anim-tilt-rise'
+  ];
+  var backAnims = [
+    'back-anim-reveal-right',
+    'back-anim-reveal-down',
+    'back-anim-reveal-fan',
+    'back-anim-reveal-scale'
+  ];
+
+  document.querySelectorAll('.book-cover-scene').forEach(function (scene) {
+    var front = scene.querySelector('.book-cover-front');
+    var back = scene.querySelector('.book-cover-back');
+    if (front) {
+      front.classList.add(frontAnims[Math.floor(Math.random() * frontAnims.length)]);
+    }
+    if (back) {
+      back.classList.add(backAnims[Math.floor(Math.random() * backAnims.length)]);
+    }
+  });
+
   // Active nav link
   var current = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a:not(.nav-cta)').forEach(function (a) {
